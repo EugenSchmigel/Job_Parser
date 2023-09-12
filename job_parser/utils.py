@@ -76,6 +76,16 @@ def sort_vacancies(vacancies):
     """Сортирует вакансии по зп"""
     return sorted(vacancies, key=lambda vac: (vac.salary['max'] or 0, vac.salary['min'] or 0), reverse=True)
 
+def get_top_vacancies(vacancies, top_n):
+    """Возвращает количество вакансий сверху"""
+    return vacancies[:top_n]
+
+
+def print_vacancies(vacancies):
+    """Печатает информацию в консоль"""
+    for vac, vacancy in enumerate(vacancies, 1):
+        print(f"{vac}. {vacancy}")
+
 
 
 
