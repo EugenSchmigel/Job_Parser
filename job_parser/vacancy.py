@@ -60,3 +60,12 @@ class VacancyActions:
     def __init__(self, file_name):
         self.vacancies = []
         self.file_name = file_name
+
+    def add_vacancy(self, vacancy):
+        """Добавляем вакансии в json файл"""
+        self.vacancies.append(vacancy)
+        self.add_vac_to_json()
+
+    def get_vacancies_by_salary(self):
+        """Сортируем вакансии по з-п"""
+        return sorted(self.vacancies, key=lambda vac: (vac.salary['max'] or 0, vac.salary['min'] or 0), reverse=False)
