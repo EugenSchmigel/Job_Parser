@@ -10,7 +10,7 @@ class Vacancy:
         self.description = description
         self.salary_currency = salary_currency
 
-@classmethod
+    @classmethod
     def vacancy_dictionary(cls, vac_data, job_source):
         """экземпляры вакансий из словарей с сайтов sj.ru и hh.ru """
 
@@ -54,6 +54,7 @@ class Vacancy:
         return f"""Вакансия: {self.title}, \n Ссылка: {self.url}, \n Зарплата от: {self.salary['min']}  Зарплата до: {self.salary['max']} \n Валюта: {self.salary_currency}, \n Описание: {self.description}"""
 
 
+
 class VacancyActions:
     """сохранения информации в файл"""
 
@@ -84,3 +85,4 @@ class VacancyActions:
         """Сохранение вакансии"""
         with open(self.file_name, "w", encoding="utf-8") as json_file:
             json.dump([vars(vac) for vac in self.vacancies], json_file, ensure_ascii=False, indent=4)
+
