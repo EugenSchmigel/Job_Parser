@@ -54,3 +54,9 @@ class Vacancy:
         return f"""Вакансия: {self.title}, \n Ссылка: {self.url}, \n Зарплата от: {self.salary['min']}  Зарплата до: {self.salary['max']} \n Валюта: {self.salary_currency}, \n Описание: {self.description}"""
 
 
+class VacancyActions:
+    """сохранения информации в файл"""
+
+    def __init__(self, file_name):
+        self.vacancies = []
+        self.file_name = file_name
