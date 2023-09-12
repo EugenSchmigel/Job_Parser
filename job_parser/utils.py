@@ -71,3 +71,19 @@ def filter_vacancies(vacancies, filter_words):
         if any(word.lower() in vacancy_longtext.lower() for word in filter_words):
             filtered_vacancies.append(vac)
     return filtered_vacancies
+
+def sort_vacancies(vacancies):
+    """Сортирует вакансии по зп"""
+    return sorted(vacancies, key=lambda vac: (vac.salary['max'] or 0, vac.salary['min'] or 0), reverse=True)
+
+
+
+
+
+
+
+
+
+
+
+
