@@ -69,3 +69,18 @@ class VacancyActions:
     def get_vacancies_by_salary(self):
         """Сортируем вакансии по з-п"""
         return sorted(self.vacancies, key=lambda vac: (vac.salary['max'] or 0, vac.salary['min'] or 0), reverse=False)
+
+    def delete_vacancy(self, vacancy):
+        """Удаляем вакансии из списка"""
+        if vacancy in self.vacancies:
+            self.vacancies.remove(vacancy)
+            self.add_vac_to_json()
+
+    def get_vacancies(self):
+        """Получаем вакансии"""
+        return self.vacancies
+
+    def add_vac_to_json(self):
+        """Сохранение вакансии"""
+        with open(self.file_name, "w", encoding="utf-8") as json_file:
+            json.dump([vars(vac) for vac in self.vacancies], json_file, ensure_ascii=False, indent=4)
