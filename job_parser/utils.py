@@ -59,3 +59,15 @@ def user_interaction():
     # Вывод N вакансий в консоль
     print_vacancies(top_vacancies)
 
+def filter_vacancies(vacancies, filter_words):
+    """фильтрация по ключевым словам"""
+    if not filter_words:
+        return vacancies
+    # список фильтрованих вакансий
+    filtered_vacancies = []
+
+    for vac in vacancies:
+        vacancy_longtext = f"{vac.title} {vac.description}"
+        if any(word.lower() in vacancy_longtext.lower() for word in filter_words):
+            filtered_vacancies.append(vac)
+    return filtered_vacancies
